@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% include('head.html.twig') %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% include('stylesheets.html.twig') %}
+{% endblock %}
+
+{% block header %}
+    {% include('header.html.twig') %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 py-4">
+            <p class="h4 pb-4">Nuevo sensor</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-4 pt-4">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center pb-5">
+        <div class="col-12 col-lg-6 col-xl-4">
+            {{ form_start(sensorForm) }}
+            <div class="row">
+                <div class="col-12 py-1">
+                    {{ form_row(sensorForm.value) }}
+                </div>
+                <div class="col-12 py-1">
+                    {{ form_row(sensorForm.sensorType) }}
+                </div>
+                <div class="col-12 pt-4">
+                    <div class="d-grid gap-2 pt-4 pb-5">
+                        <button class="btn btn-primary" type="submit">Registrar sensor</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(sensorForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include('footer.html.twig') %}
+{% endblock %}
+
+{% block javascripts %}
+    {% include('javascripts.html.twig') %}
+{% endblock %}

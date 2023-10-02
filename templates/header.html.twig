@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_home') }}" style="width: 50px;">
+            <img class="img-fluid w-100" src="{{ asset('assets/images/logos/wine-flipped.png') }}" alt="logo">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link{{ app.request.attributes.get('_route') == 'app_home'?' active':'' }}" aria-current="page" href="{{ path('app_home') }}">Lecturas</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sensores
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item{{ app.request.attributes.get('_route') == 'app_new_sensor'?' active':'' }}" href="{{ path('app_new_sensor') }}">Nuevo Sensor</a></li>
+                        <li><a class="dropdown-item{{ app.request.attributes.get('_route') == 'app_sensors'?' active':'' }}" href="{{ path('app_sensors') }}">Listado de sensores</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item{{ app.request.attributes.get('_route') == 'app_new_sensors_type'?' active':'' }}" href="{{ path('app_new_sensors_type') }}">Nuevo Tipo de sensor</a></li>
+                        <li><a class="dropdown-item{{ app.request.attributes.get('_route') == 'app_sensors_type'?' active':'' }}" href="{{ path('app_sensors_type') }}">Listado de tipos</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex">
+            <a class="navbar-brand" href="{{ path('app_logout') }}" style="width: 20px;">
+                <img class="img-fluid w-100" src="{{ asset('assets/images/logos/logout.png') }}" alt="logo">
+            </a>
+        </div>
+    </div>
+</nav>

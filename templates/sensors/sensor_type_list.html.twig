@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% include('head.html.twig') %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% include('stylesheets.html.twig') %}
+{% endblock %}
+
+{% block header %}
+    {% include('header.html.twig') %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 py-4">
+            <p class="h4 pb-4">Tipo de sensores</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pb-3">
+            <a href="{{ path('app_new_sensors_type') }}" class="btn btn-primary"><span>Añadir tipo</span></a>
+        </div>
+    </div>
+    <div class="row justify-content-center pb-5">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for type in sensorTypes %}
+                <tr>
+                    <th scope="row">{{ type.id }}</th>
+                    <td>{{ type.name }}</td>
+                    <td>
+                        <a class="d-block" href="{{ path('app_delete_sensors_type', parameters={'id': type.id}) }}" style="width: 15px">
+                            <img class="img-fluid w-100" src="{{ asset('assets/images/logos/delete.png') }}" alt="delete">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include('footer.html.twig') %}
+{% endblock %}
+
+{% block javascripts %}
+    {% include('javascripts.html.twig') %}
+{% endblock %}

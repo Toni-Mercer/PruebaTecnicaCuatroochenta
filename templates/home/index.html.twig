@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% include('head.html.twig') %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% include('stylesheets.html.twig') %}
+{% endblock %}
+
+{% block header %}
+    {% include('header.html.twig') %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 py-4">
+            <p class="h4 pb-4">Tipo de sensores</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 pb-3">
+            <button class="btn btn-primary" onclick="$.updateData()"><span>Refresh data</span></button>
+        </div>
+    </div>
+    <div class="row justify-content-center pb-5">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Año</th>
+                    <th scope="col">Variedad</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Temperatura</th>
+                    <th scope="col">Graduación</th>
+                    <th scope="col">PH</th>
+                    <th scope="col">Observaciones</th>
+                </tr>
+                </thead>
+                <tbody id="table-content">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include('footer.html.twig') %}
+{% endblock %}
+
+{% block javascripts %}
+    {% include('javascripts.html.twig') %}
+    <script>
+        $(document).ready(function () {
+            $.updateData = function() {
+                console.log('Requesting new data.');
+                $.ajax({
+                    url: '{{ path('app_measurements') }}',
+                    success: function (data, status, xhr) {
+                        $('#table-content').empty();
+                        try{
+                            console.log('Updating rows.');
+                            data.forEach(function (element) {
+                                // console.log(element)
+                                $('#table-content').append(
+                                    '<tr><th scope="row">'+element.id+'</th>' +
+                                    '<td>' + element.year + '</td>' +
+                                    '<td>' + element.variety + '</td>' +
+                                    '<td>' + element.type + '</td>' +
+                                    '<td>' + element.color + '</td>' +
+                                    '<td>' + element.temp + '</td>' +
+                                    '<td>' + element.graduation + '</td>' +
+                                    '<td>' + element.ph + '</td>' +
+                                    '<td>' + element.observations + '</td></tr>'
+                                );
+                            });
+                        } catch (e) {
+                            window.location.reload()
+                        }
+                    }
+                });
+            };
+
+            // automatically reload table every 10 seconds
+            setInterval(function () {
+                console.log('Auto data refresh launched.');
+                $.updateData()
+            }, 10000);
+
+            $.updateData();
+        })
+    </script>
+{% endblock %}

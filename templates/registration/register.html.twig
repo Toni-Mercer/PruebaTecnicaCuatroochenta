@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% include('head.html.twig') %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% include('stylesheets.html.twig') %}
+{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-4 py-4">
+            <p class="h3 text-center pb-4">Registrarse</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-4">
+            <p class="text-muted">Crea una cuanta para acceder a las lecturas.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-4">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-4">
+            {{ form_start(registrationForm) }}
+                <div class="row">
+                    <div class="col-12 py-1">
+                        {{ form_row(registrationForm.email) }}
+                    </div>
+                    <div class="col-12 py-1">
+                        {{ form_row(registrationForm.password.first) }}
+                    </div>
+                    <div class="col-12 py-1">
+                        {{ form_row(registrationForm.password.second) }}
+                    </div>
+                    <div class="col-12 py-1">
+                        {{ form_widget(registrationForm.agreeTerms) }}
+                        {{ form_label(registrationForm.agreeTerms) }}
+                    </div>
+                    <div class="col-12 pt-4">
+                        <div class="d-grid gap-2 pt-4">
+                            <button class="btn btn-primary" type="submit">Registrarse</button>
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {% include('javascripts.html.twig') %}
+{% endblock %}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        {% block head %}{% endblock %}
+        <title>{{ title | default('Wine Measurements') }}</title>
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            {% block header %}{% endblock %}
+            {% block body %}{% endblock %}
+            {% block footer %}{% endblock %}
+        </div>
+    </body>
+    {% block javascripts %}{% endblock %}
+</html>
