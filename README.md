@@ -14,7 +14,7 @@ Creación de un proyecto en Symfony.
 $ symfony new wineMeasurements
 ```
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-28 17-48-32.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-28%2017-48-32.png?raw=true)
 
 #### Instalamos los módulos necesarios vía composer
 
@@ -141,4 +141,6 @@ php bin/console app:create-user demo@mail.com 123456789
 base.html.twig tiene la estructura básica de un html y en donde definimos bloques de código básicos de un html. 
 
 Posteriormente definimos los fragmentos individualmente y anadimos el código que se va a repetir en cada página.
+
+
 
