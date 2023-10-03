@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {% include('head.html.twig') %}
+{% endblock %}
+
+{% block stylesheets %}
+    {% include('stylesheets.html.twig') %}
+
+{% endblock %}
+
+{% block header %}
+    {% include('header.html.twig') %}
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 py-4">
+            <p class="h4 pb-4">Nueva lectura</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 col-xl-4 pt-4">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center pb-5">
+        <div class="col-12">
+            {{ form_start(readingForm) }}
+            <div class="row">
+                <div class="col-1 py-1">
+                    {{ form_row(readingForm.year) }}
+                </div>
+                <div class="col-2 py-1">
+                    {{ form_row(readingForm.variety) }}
+                </div>
+                <div class="col-2 py-1">
+                    {{ form_row(readingForm.type) }}
+                </div>
+                <div class="col-2 py-1">
+                    {{ form_row(readingForm.color) }}
+                </div>
+                <div class="col-2 py-1">
+                    {{ form_row(readingForm.temperature) }}
+                </div>
+                <div class="col-1 py-1">
+                    {{ form_row(readingForm.graduation) }}
+                </div>
+                <div class="col-1 py-1">
+                    {{ form_row(readingForm.ph) }}
+                </div>
+                <div class="col-12 py-1">
+                    {{ form_row(readingForm.observaciones) }}
+                </div>
+                <div class="col-12 pt-4">
+                    <div class="d-grid gap-2 pt-4 pb-5">
+                        <button class="btn btn-primary" type="submit">Registrar lectura</button>
+                    </div>
+                </div>
+            </div>
+            {{ form_end(readingForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include('footer.html.twig') %}
+{% endblock %}
+
+{% block javascripts %}
+    {% include('javascripts.html.twig') %}
+{% endblock %}

@@ -103,6 +103,7 @@ Preparamos 4 controladores:
 - LoginController: endpoints de login e logout
 - PublicController: endpoints para la parte no autenticada
 - RegisterController: endpoints para registrarse 
+- SensorController: todos los enpoints para gestionar sensores y tipos de sensores.
 
 ```bash
 $ php bin/console make:controller Home
@@ -116,20 +117,15 @@ $ php bin/console make:registration-form
 
 > añadimos al formulario de login un path() a app_register para que se puedan dar de alta.
 
-Procedemos a crear un controlador paga gestionar los sensores
-
-```bash
-$ php bin/console make:controller Sensors
-```
-
 
 
 #### Creación de comandos en symfony.
 
-> Creamos un comando para generar un dumy user.
+Creamos un comando para generar un dumy user. Y otro para generar una medición y ver como aparece en la tabla con el autoupdate.
 
 ``` bash
 php bin/console app:create-user demo@mail.com 123456789
+php bin/console app:create-reading verdejo 'Faustino V' blanco 17.0 5.0 6.2 'Observaciones aqui.'
 ```
 
 ![](./public/assets/images/screenshoots/Screenshot from 2023-09-30 12-34-53.png)
@@ -138,9 +134,39 @@ php bin/console app:create-user demo@mail.com 123456789
 
 #### Estructura de los templates
 
-base.html.twig tiene la estructura básica de un html y en donde definimos bloques de código básicos de un html. 
+Creamos una página llamada `base.html.twig` que contenga la estructura básica de un html, diferenciando los bloques `head`, `header`, `body` y `footer` entre otros. Estos bloques contienen código compartido entre las diferentes páginas. Podríamos duplicar esta estructura para tener una parte pública y privada totalmente diferente.
 
-Posteriormente definimos los fragmentos individualmente y anadimos el código que se va a repetir en cada página.
+![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 17-44-04.png)
 
 
 
+
+
+#### Creación de los cotroladores con sus endpoints
+
+Como no tenemos parte pública hacemos un redirect al `/login` directamente en el `PublicController`.
+
+![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-12-59.png)
+
+
+
+En `HomeController` creamos los enpoints `/home`, `/measurements` donde Home devuelve una vista y measurements devuelve un json que será cargado vía ajax a la tabla de lecturas.
+
+![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-03-12.png)
+
+
+
+Para limitar las lecturas a una por día al hacer login mostramos el botón para añadir una lectura solo si en el log de lecturas `reading_log` no hay ninguna entrada de hoy. 
+
+![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-27-31.png)
+
+> Al crear un registro una vez vuelvas al login el botón no va a aparecer.
+
+![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-28-07.png)
+
+
+![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-27-47.png)
+
+#### ReadingsLog
+
+He creado `ReadingsLog` para poder limitar las lecturas a una al día.

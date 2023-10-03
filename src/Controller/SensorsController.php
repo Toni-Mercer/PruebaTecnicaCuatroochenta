@@ -16,6 +16,13 @@ use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 class SensorsController extends AbstractController
 {
+    /**
+     * Listado de sensores
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/sensors', name: 'app_sensors')]
     public function sensors(
         #[CurrentUser]
@@ -32,6 +39,13 @@ class SensorsController extends AbstractController
         ]);
     }
 
+    /**
+     * Nuevo sensor
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/sensors/new', name: 'app_new_sensor')]
     public function newSensor(
         #[CurrentUser]
@@ -62,6 +76,14 @@ class SensorsController extends AbstractController
         ]);
     }
 
+    /**
+     * Eliminamos un sensor
+     * @param $id
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/sensors/delete/{id}', name: 'app_delete_sensor')]
     public function deleteSensor(
         $id,
@@ -78,6 +100,13 @@ class SensorsController extends AbstractController
         return $this->redirectToRoute('app_sensors');
     }
 
+    /**
+     * Listado de los tipos de sensores
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/sensors/types', name: 'app_sensors_type')]
     public function sensorsType(
         #[CurrentUser]
@@ -94,6 +123,13 @@ class SensorsController extends AbstractController
         ]);
     }
 
+    /**
+     * Nuevo tipo de sensor
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/sensors/types/new', name: 'app_new_sensors_type')]
     public function newSensorType(
         #[CurrentUser]
@@ -128,6 +164,15 @@ class SensorsController extends AbstractController
         ]);
     }
 
+    /**
+     * Eliminamos un tipo de sensor si no esta usado en los sensores.
+     * TODO este metodo no valida que se pueda realmente borrar
+     * @param $id
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/sensors/types/delete/{id}', name: 'app_delete_sensors_type')]
     public function deleteSensorsType(
         $id,
@@ -137,9 +182,15 @@ class SensorsController extends AbstractController
         Request $request
     ): Response
     {
-        $sensorType = $entityManager->getRepository(SensorType::class)->find($id);
-        $entityManager->remove($sensorType);
-        $entityManager->flush();
+        $used = $entityManager->getRepository(Sensor::class)->findOneBy([
+            'sensorType' => $id
+        ]);
+
+        if (!is_object($used)){
+            $sensorType = $entityManager->getRepository(SensorType::class)->find($id);
+            $entityManager->remove($sensorType);
+            $entityManager->flush();
+        }
 
         return $this->redirectToRoute('app_sensors_type');
     }

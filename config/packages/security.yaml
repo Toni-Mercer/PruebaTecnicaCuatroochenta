@@ -22,6 +22,8 @@ security:
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
+
+            # activamos el FormLoginAuthenticator para que se encargue de validar los usuarios
             form_login:
                 login_path: app_login
                 check_path: app_login

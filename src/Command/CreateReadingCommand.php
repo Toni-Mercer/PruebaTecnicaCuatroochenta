@@ -10,8 +10,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-// run with: 'php bin/console app:create-reading crianza 'Faustino V' tinto 17.0 5.0 6.2
-// run with: 'php bin/console app:create-reading verdejo 'Faustino V' blanco 17.0 5.0 6.2 'Observaciones aqui.'
+// run with: "php bin/console app:create-reading crianza 'Faustino V' tinto 17.0 5.0 6.2"
+// run with: "php bin/console app:create-reading verdejo 'Faustino V' blanco 17.0 5.0 6.2 'Observaciones aqui.'"
 #[AsCommand(
     name: 'app:create-reading',
     description: 'Create a reading'

@@ -8,6 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PublicController extends AbstractController
 {
+    /**
+     * Redirect al login
+     * @return Response
+     */
     #[Route('/', name: 'app_public')]
     public function index(): Response
     {

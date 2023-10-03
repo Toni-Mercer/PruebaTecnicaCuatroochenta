@@ -6,6 +6,7 @@
 
 {% block stylesheets %}
     {% include('stylesheets.html.twig') %}
+
 {% endblock %}
 
 {% block header %}
@@ -20,7 +21,12 @@
     </div>
     <div class="row">
         <div class="col-12 pb-3">
-            <button class="btn btn-primary" onclick="$.updateData()"><span>Refresh data</span></button>
+            <button class="btn btn-primary" onclick="$.updateData()">
+                <img class="img-fluid" style="height: 15px; width: 15px;" src="{{ asset('assets/images/icons/reload.png') }}" alt="reload">
+            </button>
+            {% if showNewReadingButton %}
+            <a class="btn btn-primary" href="{{ path('app_new_reading') }}"><span>Añadir medición</span></a>
+            {% endif %}
         </div>
     </div>
     <div class="row justify-content-center pb-5">
