@@ -28,7 +28,7 @@ $ composer require symfony/asset
 $ composer require --dev symfony/profiler-pack
 ```
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-28 17-54-41.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-28%2017-54-41.png?raw=true)
 
 
 
@@ -70,9 +70,9 @@ $ php bin/console make:user
 $ php bin/console make:entity
 ```
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-28 18-29-07.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-28%2018-29-07.png?raw=true)
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-28 18-38-56.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-28%2018-38-56.png?raw=true)
 
 
 
@@ -80,7 +80,7 @@ El objeto queda mapeado a la DBB. Las columnas y variables no tienes porque coin
 
 > Por defecto programo en inglés. Todo y que suelo comentar en Inglés también, entiendo que mis compañeros de trabajo pueden no hablarlo y por lo tanto me ajustaré a la metodología de la empresa.
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-28 18-44-40.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-28%2018-44-40.png?raw=true)
 
 Procedemos a crear las tablas en la DBB
 
@@ -91,7 +91,7 @@ $ php bin/console doctrine:migrations:migrate
 
 usando `show tables` podemos ver que todo ha ido bien:
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-28 19-06-56.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-28%2019-06-56.png?raw=true)
 
 
 
@@ -113,7 +113,7 @@ $ composer require form validator twig-bundle
 $ php bin/console make:registration-form
 ```
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-30 11-07-48.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-30%2011-07-48.png?raw=true)
 
 > añadimos al formulario de login un path() a app_register para que se puedan dar de alta.
 
@@ -128,7 +128,7 @@ php bin/console app:create-user demo@mail.com 123456789
 php bin/console app:create-reading verdejo 'Faustino V' blanco 17.0 5.0 6.2 'Observaciones aqui.'
 ```
 
-![](./public/assets/images/screenshoots/Screenshot from 2023-09-30 12-34-53.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-09-30%2012-34-53.png?raw=true)
 
 
 
@@ -136,7 +136,7 @@ php bin/console app:create-reading verdejo 'Faustino V' blanco 17.0 5.0 6.2 'Obs
 
 Creamos una página llamada `base.html.twig` que contenga la estructura básica de un html, diferenciando los bloques `head`, `header`, `body` y `footer` entre otros. Estos bloques contienen código compartido entre las diferentes páginas. Podríamos duplicar esta estructura para tener una parte pública y privada totalmente diferente.
 
-![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 17-44-04.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-10-02%2017-44-04.png?raw=true)
 
 
 
@@ -146,26 +146,26 @@ Creamos una página llamada `base.html.twig` que contenga la estructura básica 
 
 Como no tenemos parte pública hacemos un redirect al `/login` directamente en el `PublicController`.
 
-![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-12-59.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-10-02%2018-12-59.png?raw=true)
 
 
 
 En `HomeController` creamos los enpoints `/home`, `/measurements` donde Home devuelve una vista y measurements devuelve un json que será cargado vía ajax a la tabla de lecturas.
 
-![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-03-12.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-10-02%2018-03-12.png?raw=true)
 
 
 
 Para limitar las lecturas a una por día al hacer login mostramos el botón para añadir una lectura solo si en el log de lecturas `reading_log` no hay ninguna entrada de hoy. 
 
-![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-27-31.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-10-02%2018-27-31.png?raw=true)
 
 > Al crear un registro una vez vuelvas al login el botón no va a aparecer.
 
-![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-28-07.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-10-02%2018-28-07.png?raw=true)
 
 
-![](/home/toni/PhpStormProjects/wineMeasurements/public/assets/images/screenshoots/Screenshot from 2023-10-02 18-27-47.png)
+![](https://github.com/Toni-Mercer/PruebaTecnicaCuatroochenta/blob/master/public/assets/images/screenshoots/Screenshot%20from%202023-10-02%2018-27-47.png?raw=true)
 
 #### ReadingsLog
 
